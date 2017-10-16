@@ -1,0 +1,31 @@
+{
+  "name": "book-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon",
+    "db:create": "createdb bookstore",
+    "db:drop": "dropdb bookstore",
+    "db:schema": "psql bookstore < ./src/models/db/schema/schema.sql",
+    "db:reset": "npm run db:drop; npm run db:create && npm run db:schema",
+    "test:create": "createdb bookstore_test",
+    "test:drop": "dropdb bookstore_test",
+    "test:schema": "psql bookstore_test < ./src/models/db/schema/schema.sql",
+    "test:reset": "npm run test:drop; npm run test:create && npm run test:schema",
+    "test": "NODE_ENV=test mocha test --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milestribble/book-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milestribble/book-store/issues"
+  },
+  "homepage": "https://github.com/milestribble/book-store#readme",
+  "dependencies": {
+    "pg-promise": "^7.0.2"
+  }
+}
