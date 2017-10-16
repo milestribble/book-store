@@ -16,7 +16,7 @@ CREATE TABLE books (
   title VARCHAR(255),
   genre VARCHAR(255),
   subgenre VARCHAR(255),
-  publsiher VARCHAR(255)
+  publisher VARCHAR(255)
 );
 
 CREATE TABLE authors_books (
