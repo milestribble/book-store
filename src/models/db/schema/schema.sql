@@ -1,9 +1,14 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
+  username VARCHAR(255),
   email VARCHAR(255),
   encrypted_password VARCHAR(255),
   role VARCHAR(255)
+);
+
+CREATE TABLE sessions (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id)
 );
 
 CREATE TABLE authors (

@@ -30,11 +30,11 @@ module.exports = {
   },
 
   /**
-   * UPDATE 
+   * UPDATE
    */
 
-  update: (books) => {
-    const { id, title, genre, subgenre, publisher } = books
+  update: (book) => {
+    const { id, title, genre, subgenre, publisher } = book
     return query(`UPDATE books
       SET title = $1, genre = $2, subgenre = $3, publisher = $4
       WHERE id = $5  RETURNING *`,[ title, genre, subgenre, publisher, id ])
@@ -55,13 +55,9 @@ module.exports = {
            VALUES
              ($1, $2)`, [book_id, author_id]),
 
-  unlinkAuthor: (book_id, author_id) =>
+  unlinkAllAuthors: (book_id) =>
     query(`DELETE FROM authors_books
-          WHERE book_id = $1 AND author_id = $2`,
-          [book_id, author_id])
+          WHERE book_id = $1`,
+          [book_id])
 
 }
-
-
-
-// books.assignAuthor(author)

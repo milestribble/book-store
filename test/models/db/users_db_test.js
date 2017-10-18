@@ -165,25 +165,4 @@ describe(`users#update`, function() {
    })
 
  })
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-describe(``, function() {
-
-  it(``, function() {
-
-  })
-
-})
-
-*/
+ 

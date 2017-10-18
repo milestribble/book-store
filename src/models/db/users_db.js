@@ -5,11 +5,11 @@ module.exports = {
     CREATE
     */
 
-  create: (name, email, encrypted_password, role) =>
+  create: (user) =>
     query(`INSERT INTO
-            users (name, email, encrypted_password, role)
+            users (username, email, encrypted_password, role)
           VALUES  ($1, $2, $3, $4)
-          RETURNING *`, [name, email, encrypted_password, role]),
+          RETURNING *`, [user.username, user.email, user.password, user.role]),
 
   /**
     READ
@@ -33,7 +33,7 @@ module.exports = {
   update: (user) => {
     const { id, name, email, encrypted_password, role } = user
     return query(`UPDATE users
-      SET name = $1, email = $2, encrypted_password = $3, role = $4
+      SET username = $1, email = $2, encrypted_password = $3, role = $4
       WHERE id = $5  RETURNING *`,[name, email, encrypted_password, role, id])
   },
 
