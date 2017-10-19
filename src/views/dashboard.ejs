@@ -1,0 +1,38 @@
+
+<% include partials/header %>
+  <script src="dashboard.js"></script>
+  <div class="container">
+
+    <header class="jumbotron">
+      <div class="container">
+        <h1>Book Store</h1>
+        <p>Welcome to the Book Store</p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Book: </a>
+        </p>
+      </div>
+    </header>
+
+    <ul id="holder" class="row text-center" style="display:flex; flex-wrap: wrap;">
+
+
+    </ul>
+
+  </div>
+
+  <div style='display: none' id='templates'>
+
+
+    <div class="book col-lg-4 col-md-4">
+      <div class="thumbnail">
+        <img src="https://media.istockphoto.com/photos/stack-of-books-picture-id507311349?k=6&m=507311349&s=612x612&w=0&h=eOFF8x1-CvOSvV6hIuZRp-q430OAmPtVUdvxgRc8zz8=">
+        <div class="caption">
+          <h4 class="title">
+            title
+          </h4>
+          <button class="editbtn">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% include partials/footer %>

@@ -7,7 +7,6 @@ const cryptr = new Cryptr('htrsgjkljhgb3@%#$#cfjku456y5ju1')
 
 module.exports.sessionMiddleware = (req, res, next) => {
   let sessionId
-  console.log(req.cookies, '***')
   if(req.cookies.sessionCookie) {
     sessionId = +cryptr.decrypt(req.cookies.sessionCookie)
     sessions.getUserId(sessionId)
@@ -27,6 +26,7 @@ module.exports.sessionMiddleware = (req, res, next) => {
   }
 
   onHeaders(res, function() {
+    console.log(req.cookies);
     if(req.session) {
       res.cookie('sessionCookie',  cryptr.encrypt(req.session.id))
     } else {

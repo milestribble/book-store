@@ -63,7 +63,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  console.log(`req.session`, req.session)
+  console.log(`req.session`, req.body)
   if (req.session) {
     res.status(302).redirect('/books')
   } else {
@@ -117,11 +117,13 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  console.log(req.session.id)
-  sessions.destroy(req.session.id)
-  delete req.session
-  console.log(req.session);
-  res.render('login',{err:null})
+  if (!req.session) {
+    res.status(302).redirect('/login')
+  } else {
+    sessions.destroy(req.session.id)
+    delete req.session
+    res.render('login',{err:null})
+  }
 })
 
 module.exports = router

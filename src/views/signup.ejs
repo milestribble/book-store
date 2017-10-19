@@ -1,24 +1,106 @@
-<form class="ui form" action="/signup" method="POST">
-SIGN UP
-    <% if(err)   %>
-    <%= err     %>
-    <div class="field">
-      <label>Username</label>
-      <input type="text" name="username" placeholder="username">
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="http://semantic-ui-forest.com/static/dist/semantic-ui/semantic.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://semantic-ui-forest.com/static/stylesheets/default.css" rel="stylesheet" type="text/css" />
+    <script src="http://semantic-ui-forest.com/static/dist/jquery/jquery.min.js"></script>
+  </head>
+  <body class="template">
+    <div class="ui center aligned grid">
+      <div class="ui container">
+        <h1 class="ui huge header">
+          Please sign up
+        </h1>
+        <form action="/signup" method="POST" class="ui large form">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i><input name="email" placeholder="E-mail address" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i><input name="username" placeholder="Username" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i><input name="password" placeholder="Password" type="password" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input name="remember" type="checkbox" /><label>Remember me</label>
+            </div>
+          </div>
+          <button action="submit" class="ui fluid large primary submit button">
+            Sign up
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="field">
-      <label>email</label>
-      <input type="email" name="email" placeholder="email">
-    </div>
-    <div class="field">
-      <label>password</label>
-      <input type="password" name="password" placeholder="password">
-    </div>
-    <div class="field">
-      <label>Roles</label>
+    <script src="http://semantic-ui-forest.com/static/dist/semantic-ui/semantic.min.js"></script>
+    <style type="text/css">
+      body {
+        background-color: #eee;
+      }
 
-      <input type="radio" name="roles" value="admin">Admin</input>
-      <input type="radio" name="roles" value="regular">Regular</input>
-    </div>
-    <input class="ui violet big basic button" type="submit">
-  </form>
+      .ui.container {
+        margin-top: 6em;
+        max-width: 22em !important;
+      }
+    </style>
+    <script>
+      $(document)
+        .ready(function() {
+          $('.ui.checkbox').checkbox();
+          $('.ui.form')
+            .form({
+              fields: {
+                email: {
+                  identifier  : 'email',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your e-mail'
+                    },
+                    {
+                      type   : 'email',
+                      prompt : 'Please enter a valid e-mail'
+                    }
+                  ]
+                },
+                username: {
+                  identifier  : 'username',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter a username'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your password'
+                    },
+                    {
+                      type   : 'length[6]',
+                      prompt : 'Your password must be at least 6 characters'
+                    }
+                  ]
+                }
+              },
+              on: 'blur'
+            })
+          ;
+        })
+      ;
+    </script>
+  </body>
+  <footer>
+    <!-- <script src="http://semantic-ui-forest.com/static/javascripts/ga.js"></script>
+    <script src="http://semantic-ui-forest.com/static/javascripts/growingio.js"></script> -->
+  </footer>
+</html>

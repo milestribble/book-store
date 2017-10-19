@@ -12,7 +12,6 @@ module.exports = {
             books (title, genre, subgenre, publisher)
           VALUES  ($1, $2, $3, $4)
           RETURNING *`, [title, genre, subgenre, publisher])
-
   },
 
   /**
@@ -58,6 +57,12 @@ module.exports = {
   unlinkAllAuthors: (book_id) =>
     query(`DELETE FROM authors_books
           WHERE book_id = $1`,
-          [book_id])
+          [book_id]),
+
+  getAuthorsByBookId: (book_id) =>
+    query(`SELECT authors.name FROM authors
+           JOIN authors_books
+           ON authors_books.author_id=authors.id
+           WHERE authors_books.book_id=$1`, [book_id])
 
 }
