@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  renderBooks()
+  // renderBooks()
+  fetch(`https://www.goodreads.com/review/list?v=72782533`)
+  .then(results => results.json())
+  .then(results=>console.log(results))
 })
 
 //How to know which user is signed in  ? Admin or Regular

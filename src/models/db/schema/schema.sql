@@ -19,9 +19,10 @@ CREATE TABLE authors (
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
-  genre VARCHAR(255),
-  subgenre VARCHAR(255),
-  publisher VARCHAR(255)
+  image_url VARCHAR(255),
+  ISBN VARCHAR(255),
+  price VARCHAR(255),
+  description TEXT
 );
 
 CREATE TABLE authors_books (

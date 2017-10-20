@@ -18,6 +18,7 @@ const renderBooks = (books) => {
     document.querySelector(`#holder`).innerHTML = ""
     books.forEach(bookInfo => {
       let bookNode = document.querySelector('#templates').querySelector('.book').cloneNode(true)
+      bookNode.querySelector('img').src = bookInfo.image_url
       bookNode.querySelector('.title').innerText = bookInfo.title
 
       addEventListeners(bookNode, bookInfo)
@@ -33,6 +34,7 @@ const renderBooks = (books) => {
 <% if (session.user.role === 'admin') { %>
 const addEventListeners = (book, bookInfo) => {
   book.querySelector('.btn').innerText = 'Delete'
+  book.querySelector('.btn').classList.add('btn','btn-danger')
   book.querySelector('.btn').addEventListener('click', function(e) {
     e.stopPropagation();
     fetch('/api/books/'+bookInfo.id, {
@@ -46,26 +48,36 @@ const addEventListeners = (book, bookInfo) => {
   book.addEventListener('click', function() {
     //inject the form to edit the book to modal
     document.querySelector('.modal-form').innerHTML = `
+      <h2>Edit book:</h2>
       <form class="ui large form">
         <div class="field">
           <div class="ui left input">
+          <label> Title: </label>
           <input id="title" value="${bookInfo.title}" type="text" />
           </div>
         </div>
         <div class="field">
           <div class="ui left input">
-            <label> Genre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-            <input id="genre" value="${bookInfo.genre}" type="text" />
+            <label> Image URL: </label>
+            <input id="image_url" value="${bookInfo.image_url}" type="text" />
           </div>
         </div>
         <div class="field">
           <div class="ui left input">
-            <input id="subgenre" value="${bookInfo.subgenre}" type="text" />
+            <label> ISBN: </label>
+            <input id="isbn" value="${bookInfo.isbn}" type="text" />
           </div>
         </div>
         <div class="field">
           <div class="ui left input">
-            <input id="publisher" value="${bookInfo.publisher}" type="text" />
+            <label> Price: </label>
+            <input id="price" value="${bookInfo.price}" type="text" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left input">
+            <label> Description: </label>
+            <input id="description" value="${bookInfo.description}" type="text" />
           </div>
         </div>
         <div id="submit" class="ui fluid large primary submit button">
@@ -77,9 +89,10 @@ const addEventListeners = (book, bookInfo) => {
       let submission = {}
       submission.id = bookInfo.id
       submission.title = document.querySelector('#title').value
-      submission.genre = document.querySelector('#genre').value
-      submission.subgenre = document.querySelector('#subgenre').value
-      submission.publisher = document.querySelector('#publisher').value
+      submission.image_url = document.querySelector('#image_url').value
+      submission.isbn = document.querySelector('#isbn').value
+      submission.price = document.querySelector('#price').value
+      submission.description = document.querySelector('#description').value
       document.querySelector('.modal').style.display = 'block'
       console.log(JSON.stringify(submission))
       console.log(`/api/books/${bookInfo.id}`)

@@ -8,7 +8,7 @@
     "db:create": "createdb bookstore",
     "db:drop": "dropdb bookstore",
     "db:schema": "psql bookstore < ./src/models/db/schema/schema.sql",
-    "db:seed": "psql bookstore < ./src/models/db/schema/load-data.sql",
+    "db:seed": "node src/models/db/schema/load-data.js",
     "db:reset": "npm run db:drop; npm run db:create && npm run db:schema && npm run db:seed",
     "test:create": "createdb bookstore_test",
     "test:drop": "dropdb bookstore_test",

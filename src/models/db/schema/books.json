@@ -1,0 +1,129 @@
+[{
+  "title": "The Art of UNIX Programming",
+  "image_url": "https://images.gr-assets.com/books/1348957784l/104745.jpg",
+  "isbn": "0131429019",
+  "description": "This text reveals the software design secrets of the original Unix designers, showing how they produce software that is fast, portable, reuseable, modular and long-lived. Luminaries including Brian Kernighan, David Korn and Henry Spencer contribute to the book.",
+  "author": "Eric S. Raymond",
+  "price": 37.75
+}, {
+  "title": "Types and Programming Languages",
+  "image_url": "https://images.gr-assets.com/books/1347671948l/112252.jpg",
+  "isbn": "0262162091",
+  "description": "A type system is a syntactic method for automatically checking the absence of certain erroneous behaviors by classifying program phrases according to the kinds of values they compute. The study of type systems -- and of programming languages from a type-theoretic perspective -- has important applications in software engineering, language design, high-performance compilers, and security.<br /><br />This text provides a comprehensive introduction both to type systems in computer science and to the basic theory of programming languages. The approach is pragmatic and operational; each new concept is motivated by programming examples and the more theoretical sections are driven by the needs of implementations. Each chapter is accompanied by numerous exercises and solutions, as well as a running implementation, available via the Web. Dependencies between chapters are explicitly identified, allowing readers to choose a variety of paths through the material.<br /><br />The core topics include the untyped lambda-calculus, simple type systems, type reconstruction, universal and existential polymorphism, subtyping, bounded quantification, recursive types, kinds, and type operators. Extended case studies develop a variety of approaches to modeling the features of object-oriented languages.",
+  "author": "Benjamin C. Pierce",
+  "price": 39.75
+}, {
+  "title": "Domain-Driven Design: Tackling Complexity in the Heart of Software",
+  "image_url": "https://images.gr-assets.com/books/1287493789l/179133.jpg",
+  "isbn": "0321125215",
+  "description": "\"Eric Evans has written a fantastic book on how you can make the design of your software match your mental model of the problem domain you are addressing. \"His book is very compatible with XP. It is not about drawing pictures of a domain; it is about how you think of it, the language you use to talk about it, and how you organize your software to reflect your improving understanding of it. Eric thinks that learning about your problem domain is as likely to happen at the end of your project as at the beginning, and so refactoring is a big part of his technique. \"The book is a fun read. Eric has lots of interesting stories, and he has a way with words. I see this book as essential reading for software developers--it is a future classic.\" --<b>Ralph Johnson</b>, author of <i>Design Patterns</i> \"If you don't think you are getting value from your investment in object-oriented programming, this book will tell you what you've forgotten to do. \"Eric Evans convincingly argues for the importance of domain modeling as the central focus of development and provides a solid framework and set of techniques for accomplishing it. This is timeless wisdom, and will hold up long after the methodologies du jour have gone out of fashion.\" --<b>Dave Collins</b>, author of <i>Designing Object-Oriented User Interfaces </i> \"Eric weaves real-world experience modeling--and building--business applications into a practical, useful book. Written from the perspective of a trusted practitioner, Eric's descriptions of ubiquitous language, the benefits of sharing models with users, object life-cycle management, logical and physical application structuring, and the process and results of deep refactoring are major contributions to our field.\" --<b>Luke Hohmann</b>, author of <i>Beyond Software Architecture </i> \"This book belongs on the shelf of every thoughtful software developer.\" --<b>Kent Beck</b> \"What Eric has managed to capture is a part of the design process that experienced object designers have always used, but that we have been singularly unsuccessful as a group in conveying to the rest of the industry. We've given away bits and pieces of this knowledge...but we've never organized and systematized the principles of building domain logic. This book is important.\" --<b>Kyle Brown</b>, author of <i>Enterprise Java(TM) Programming with IBM(R) WebSphere(R)</i> The software development community widely acknowledges that domain modeling is central to software design. Through domain models, software developers are able to express rich functionality and translate it into a software implementation that truly serves the needs of its users. But despite its obvious importance, there are few practical resources that explain how to incorporate effective domain modeling into the software development process. <b> <i>Domain-Driven Design</i> </b> fills that need. This is not a book about specific technologies. It offers readers a systematic approach to domain-driven design, presenting an extensive set of design best practices, experience-based techniques, and fundamental principles that facilitate the development of software projects facing complex domains. Intertwining design and development practice, this book incorporates numerous examples based on actual projects to illustrate the application of domain-driven design to real-world software development. Readers learn how to use a domain model to make a complex development effort more focused and dynamic. A core of best practices and standard patterns provides a common language for the development team. A shift in emphasis--refactoring not just the code but the model underlying the code--in combination with the frequent iterations of Agile development leads to deeper insight into domains and enhanced communication between domain expert and programmer. <b> <i>Domain-Driven Design</i> </b> then builds on this foundation, and addresses modeling and design for complex systems and larger organizations.Specific topics covered include:<br />Getting all team members to speak the same language Connecting model and implementation more deeply Sharpening key distinctions in a model Managing the lifecycle of a domain object Writing domain code that is safe to combine in elaborate ways Making complex code obvious and predictable Formulating a domain vision statement Distilling the core of a complex domain Digging out implicit concepts needed in the model Applying analysis patterns Relating design patterns to the model Maintaining model integrity in a large system Dealing with coexisting models on the same project Organizing systems with large-scale structures Recognizing and responding to modeling breakthroughs With this book in hand, object-oriented developers, system analysts, and designers will have the guidance they need to organize and focus their work, create rich and useful domain models, and leverage those models into quality, long-lasting software implementations.",
+  "author": "Eric Evans",
+  "price": 10.75
+}, {
+  "title": "Software Requirements: Practical Techniques for Gathering and Managing Requirements Throughout the Product Development Cycle",
+  "image_url": "https://images.gr-assets.com/books/1424820035l/349416.jpg",
+  "isbn": "0735618798",
+  "description": "<div><p>Without formal, verifiable software requirements—and an effective system for managing them—the programs that developers think they’ve agreed to build often will not be the same products their customers are expecting. In SOFTWARE REQUIREMENTS, Second Edition, requirements engineering authority Karl Wiegers amplifies the best practices presented in his original award-winning text?now a mainstay for anyone participating in the software development process.</p><p>In this book, you’ll discover effective techniques for managing the requirements engineering process all the way through the development cycle—including dozens of techniques to facilitate that all-important communication between users, developers, and management. This updated edition features new case examples, anecdotes culled from the author’s extensive consulting career, and specific Next Steps for putting the book’s process-improvement principles into practice. You’ll also find several new chapters, sample documents, and an incisive troubleshooting guide.</p><p>Discover how to:</p>   Set achievable expectations for functionality and quality   NEW: Incorporate business rules into application development   Employ use cases to discover user requirements   Arrest creeping requirements and manage change requests   NEW: Deal with requirements on maintenance, outsourced, and package solution projects   Curb the impulse to “gold-plate” your programs   NEW: Grow effective requirements analysts   Cut revisions—and costs—dramatically   Produce better software!   <p>No matter what kind of software you build, or what your role in the development process, SOFTWARE REQUIREMENTS, Second Edition, delivers expert guidance and field-tested techniques for engineering software success.</p></div>",
+  "author": "Karl Wiegers",
+  "price": 30.75
+}, {
+  "title": "Beautiful Code: Leading Programmers Explain How They Think",
+  "image_url": "https://images.gr-assets.com/books/1328834707l/405790.jpg",
+  "isbn": "0596510047",
+  "description": "How do the experts solve difficult problems in software development? In this unique and insightful book, leading computer scientists offer case studies that reveal how they found unusual, carefully designed solutions to high-profile projects. You will be able to look over the shoulder of major coding and design experts to see problems through their eyes.<br /><br />This is not simply another design patterns book, or another software engineering treatise on the right and wrong way to do things. The authors think aloud as they work through their project's architecture, the tradeoffs made in its construction, and when it was important to break rules. <i>Beautiful Code</i> is an opportunity for master coders to tell their story. All author royalties will be donated to Amnesty International.",
+  "author": "Andy Oram",
+  "price": 39.75
+}, {
+  "title": "Waltzing with Bears: Managing Risk on Software Projects",
+  "image_url": "https://images.gr-assets.com/books/1356137390l/665153.jpg",
+  "isbn": "0932633609",
+  "description": "The authors, consultants in risk and management, show how to identify and embrace worthwhile risks in software development and offer strategies for common risks that software projects face, such as schedule flaws, requirements inflation, and specification breakdown. Annotation (c) Book News, Inc., P",
+  "author": "Tom DeMarco",
+  "price": 2.75
+}, {
+  "title": "Writing Solid Code",
+  "image_url": "https://images.gr-assets.com/books/1388426936l/598624.jpg",
+  "isbn": "1556155514",
+  "description": "<br /> Fatbrain Review  Explains Microsoft's techniques for developing bug free C programs and provides practical approaches to the prevention and automatic detection of errors. Focus is on an in-depth analysis and exposition of not-so-obvious coding errors in the sample code provided. The theme is to answer the questions 'How couild I have automatically detected this bug' and 'How could I have prevented this bug'? Chapters include programmer attitudes, techniques and debugging methodology. A particularly revealing chapter is \"Treacheries of the Trade\", should be required reading for all C maniacs. The author has been a professional programmer for seventeen years and draws heavily (and candidly) on actual coding problems and practices based on years of experience at Microsoft.",
+  "author": "Steve Maguire",
+  "price": 18.75
+}, {
+  "title": "Agile!: The Good, the Hype and the Ugly",
+  "image_url": "https://images.gr-assets.com/books/1406515786l/20731593.jpg",
+  "isbn": "3319051547",
+  "description": "Here is the ideal introduction to agile development. The book details agile principles, roles, managerial practices, technical practices and artifacts, offering a complete review that will help readers master all the important agile ideas.",
+  "author": "Bertrand Meyer",
+  "price": 37.75
+}, {
+  "title": "A Discipline of Programming",
+  "image_url": "https://images.gr-assets.com/books/1348910294l/2276288.jpg",
+  "isbn": "013215871X",
+  "author": "Edsger W. Dijkstra",
+  "price": 10.75
+}, {
+  "title": "Programmers at Work: Interviews With 19 Programmers Who Shaped the Computer Industry",
+  "image_url": "https://images.gr-assets.com/books/1361253341l/2092682.jpg",
+  "isbn": "1556152116",
+  "author": "Susan Lammers",
+  "price": 11.75
+}, {
+  "title": "Geekonomics: The Real Cost of Insecure Software",
+  "image_url": "https://images.gr-assets.com/books/1348760499l/2265508.jpg",
+  "isbn": "0321477898",
+  "description": "'Geekonomics' spells out what insecure softare costs all of us, and what technologists can do to demand, and get, better software. It explains why low-quality software is continually distributed, why consumers willingly purchase unreliable software, why governments leave the industry alone, and what can be done to improve matters.",
+  "author": "David Rice",
+  "price": 7.75
+}, {
+  "title": "Masterminds of Programming: Conversations with the Creators of Major Programming Languages",
+  "image_url": "https://images.gr-assets.com/books/1328834764l/1746425.jpg",
+  "isbn": "0596515170",
+  "description": "<i>Masterminds of Programming</i> features exclusive interviews with the creators of several historic and highly influential programming languages. In this unique collection, you'll learn about the processes that led to specific design decisions, including the goals they had in mind, the trade-offs they had to make, and how their experiences have left an impact on programming today. <i>Masterminds of Programming</i> includes individual interviews with:<br /><br /><br /><br /><br />Adin D. Falkoff: APL Thomas E. Kurtz: BASIC Charles H. Moore: FORTH Robin Milner: ML Donald D. Chamberlin: SQL Alfred Aho, Peter Weinberger, and Brian Kernighan: AWK Charles Geschke and John Warnock: PostScript Bjarne Stroustrup: C++ Bertrand Meyer: Eiffel Brad Cox and Tom Love: Objective-C Larry Wall: Perl Simon Peyton Jones, Paul Hudak, Philip Wadler, and John Hughes: Haskell Guido van Rossum: Python Luiz Henrique de Figueiredo and Roberto Ierusalimschy: Lua James Gosling: Java Grady Booch, Ivar Jacobson, and James Rumbaugh: UML Anders Hejlsberg: Delphi inventor and lead developer of C# If you're interested in the people whose vision and hard work helped shape the computer industry, you'll find <i>Masterminds of Programming</i> fascinating.",
+  "author": "Federico Biancuzzi",
+  "price": 29.75
+}, {
+  "title": "Software Craftsmanship: The New Imperative",
+  "image_url": "https://images.gr-assets.com/books/1348067012l/1035377.jpg",
+  "isbn": "0201733862",
+  "description": "Introducing software craftsmanship, a programmer-centric way to build software, this text explains why software engineering isn't enough and aims to transform the developer's relationship with users and customers.",
+  "author": "Pete McBreen",
+  "price": 42.75
+}, {
+  "title": "Code Reading: Open Source Perspective",
+  "image_url": "https://images.gr-assets.com/books/1349016117l/529511.jpg",
+  "isbn": "0201799405",
+  "author": "Diomidis Spinellis",
+  "price": 25.75
+}, {
+  "title": "The Elements of Programming Style",
+  "image_url": "https://images.gr-assets.com/books/1387733024l/454039.jpg",
+  "isbn": "0070342075",
+  "author": "Brian W. Kernighan",
+  "price": 7.75
+}, {
+  "title": "Quality Software Management: Systems Thinking",
+  "image_url": "https://images.gr-assets.com/books/1388902624l/714348.jpg",
+  "isbn": "0932633226",
+  "author": "Gerald M. Weinberg",
+  "price": 40.75
+}, {
+  "title": "An Introduction to General Systems Thinking",
+  "image_url": "https://images.gr-assets.com/books/1388815244l/583766.jpg",
+  "isbn": "0932633498",
+  "description": "Makes the most generally applicable insights from general systems theorists and from disciplinarians available to the widest audience possible.",
+  "author": "Gerald M. Weinberg",
+  "price": 39.75
+}, {
+  "title": "Becoming a Technical Leader: An Organic Problem-Solving Approach",
+  "image_url": "https://images.gr-assets.com/books/1356465723l/714344.jpg",
+  "isbn": "0932633021",
+  "description": "Becoming a Technical Leader is a personalized guide to developing the qualities that make a successful problem-solving leader. The book emphasizes that we all contain the ingredients for leadership, though some elements are better developed than others. \"Anyone can improve as a leader simply by building the strength of our weakest elements, \" author Gerald M. Weinberg writes. \"Mr. Universe doesn't have more muscles than I do, just better developed ones.\"On one level, the book is an extremely down-to-earth, how-to guide. On a second, it is a set of parables, full of analogies that stick in the mind -- the art of management taught through stories about pinball, tinkertoys, and electric blankets. On yet another level, this is a book about the philosophy and psychology of managing technical projects. On every level, the author brings these entertaining and enlightening elements together to teach you the essentials of leadership.<br /><br />You'll learn how to<br />-- master your fear of becoming a leader<br />-- be creative in solving problems<br />-- motivate people while maintaining quality<br />-- gain organizational power<br />-- plan personal change.<br />-- Whether you manage people, are managed by people, or just want to change the way you interact with others, this book is about success. How to plan it, how to make it happen -- Becoming a Technical Leader shows you how to do it!",
+  "author": "Gerald M. Weinberg",
+  "price": 21.75
+}, {
+  "title": "The Psychology of Computer Programming",
+  "image_url": "https://images.gr-assets.com/books/1356139932l/1660754.jpg",
+  "isbn": "0932633420",
+  "description": "This landmark 1971 classic is reprinted with a new preface, chapter-by-chapter commentary, and straight-from-the-heart observations on topics that affect the professional life of programmers.Long regarded as one of the first books to pioneer a people-oriented approach to computing, The Psychology of Computer Programming endures as a penetrating analysis of the intelligence, skill, teamwork, and problem-solving power of the computer programmer.<br /><br />Finding the chapters strikingly relevant to today's issues in programming, Gerald M. Weinberg adds new insights and highlights the similarities and differences between now and then. Using a conversational style that invites the reader to join him, Weinberg reunites with some of his most insightful writings on the human side of software engineering.<br /><br />Topics include egoless programming, intelligence, psychological measurement, personality factors, motivation, training, social problems on large projects, problem-solving ability, programming language design, team formation, the programming environment, and much more.<br /><br />Dorset House Publishing is proud to make this important text available to new generations of programmers -- and to encourage readers of the first edition to return to its valuable lessons.",
+  "author": "Gerald M. Weinberg",
+  "price": 21.75
+}]
