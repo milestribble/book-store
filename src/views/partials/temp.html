@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="http://semantic-ui-forest.com/static/dist/semantic-ui/semantic.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://semantic-ui-forest.com/static/stylesheets/default.css" rel="stylesheet" type="text/css" />
+    <script src="http://semantic-ui-forest.com/static/dist/jquery/jquery.min.js"></script>
+  </head>
+  <body class="template">
+    <div class="ui center aligned grid">
+      <div class="ui container">
+        <h1 class="ui huge header">
+          Edit Book
+        </h1>
+        <form action="/api/books/" method="POST" class="ui large form">
+          <div class="field">
+            <div class="ui left input">
+            <input name="title" placeholder="Title" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left input">
+              <input name="genre" placeholder="Genre" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left input">
+              <input name="publisher" placeholder="Publisher" type="text" />
+            </div>
+          </div>
+          <button class="ui fluid large primary submit button">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="http://semantic-ui-forest.com/static/dist/semantic-ui/semantic.min.js"></script>
+    <style type="text/css">
+      body {
+        background-color: #eee;
+      }
+
+      .ui.container {
+        margin-top: 6em;
+        max-width: 22em !important;
+      }
+    </style>
+
+  </body>
+
+</html>

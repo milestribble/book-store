@@ -25,7 +25,7 @@ module.exports = {
     if (!property || !value)
       throw new Error('At books#getBy: Did not receive an arg.'+property+value)
 
-    return query(`SELECT * FROM books WHERE ${property}=$1`, [value])
+    return query(`SELECT * FROM books WHERE ${property}=$1 ORDER BY id`, [value])
   },
 
   /**
@@ -43,7 +43,7 @@ module.exports = {
     DESTROY
    */
    destroy: (id) =>
-     query(`DELETE FROM books WHERE id=$1`, [id]),
+     query(`DELETE FROM books WHERE books.id=$1`, [id]),
 
   /**
     LINK AUTHOR

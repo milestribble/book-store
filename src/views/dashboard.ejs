@@ -1,6 +1,12 @@
-
+<!-- <script type="text/javascript">
+     let user = {a:5,b:8}
+</script> -->
 <% include partials/header %>
-  <script src="dashboard.js"></script>
+
+<% include partials/script %>
+
+<% include partials/styles %>
+
   <div class="container">
 
     <header class="jumbotron">
@@ -30,9 +36,23 @@
           <h4 class="title">
             title
           </h4>
-          <button class="editbtn">Edit</button>
+          <button class="btn"></button>
         </div>
       </div>
     </div>
+
   </div>
+
+
+
+<div class="modal">
+  <div class="modal-content">
+    <span class="closeBtn">&times;</span>
+    <h2>Modal</h2>
+    <div class="modal-form">
+
+
+    </div>
+  </div>
+</div>
   <% include partials/footer %>

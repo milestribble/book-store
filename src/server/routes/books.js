@@ -14,11 +14,15 @@ router.get('/books', (req, res) => {
 // })
 
 router.post('/books', (req, res) => {
-  books.create(req.body)
-  books.getAll()
-  .then(results => {
-    res.json(results)
-  })
+  if (req.session.user.role !== 'admin') {
+    res.status(403).json("Unauthorised")
+  } else {
+    books.create(req.body)
+    books.getAll()
+    .then(results => {
+      res.json(results)
+    })
+  }
 })
 
 router.get('/books/:id', (req, res) => {
@@ -34,25 +38,33 @@ router.get('/books/:id', (req, res) => {
 // })
 
 router.put('/books/:id', (req, res) => {
-  books.update(req.body)
-  .then(() => {
-    books.getAll()
-    .then(results => {
-      res.json(results)
+  if (req.session.user.role !== 'admin') {
+    res.status(403).json("Unauthorised")
+  } else {
+    console.log(req.body,'2stars');
+    books.update(req.body)
+    .then(() => {
+      books.getAll()
+      .then(results => {
+        res.json(results)
+      })
     })
-  })
-
+  }
 })
 
 router.delete('/books/:id', (req, res) => {
-  let id = req.params.id
-  books.destroy(id)
-  .then(() => {
-    books.getAll()
-    .then(results => {
-      res.json(results)
+  if (req.session.user.role !== 'admin') {
+    res.status(403).json("Unauthorised")
+  } else {
+    let id = req.params.id
+    books.destroy(id)
+    .then(() => {
+      books.getAll()
+      .then(results => {
+        res.json(results)
+      })
     })
-  })
+  }
 })
 
 

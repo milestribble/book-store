@@ -41,9 +41,9 @@ app.get('/', (req,res) => {
     res.redirect('/login')
   }
 })
-
 app.get('/books', (req, res) => {
   if (req.session) {
+    console.log(req.session);
     res.render('dashboard', {session: req.session})
     // res.status(302).redirect('/books')
   } else {

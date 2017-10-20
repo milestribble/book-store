@@ -1,0 +1,148 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  fetch('/api/books', {
+    credentials: "same-origin"
+  })
+  .then(response => response.json())
+  .then(renderBooks)
+
+  document.querySelector('.closeBtn').addEventListener('click', function() {
+    document.querySelector('.modal').style.display = 'none'
+  })
+})
+
+//How to know which user is signed in  ? Admin or Regular
+const renderBooks = (books) => {
+    books.sort((left, right) => left.id - right.id)
+    document.querySelector(`#holder`).innerHTML = ""
+    books.forEach(bookInfo => {
+      let bookNode = document.querySelector('#templates').querySelector('.book').cloneNode(true)
+      bookNode.querySelector('.title').innerText = bookInfo.title
+
+      addEventListeners(bookNode, bookInfo)
+
+
+      document.querySelector(`#holder`).appendChild(bookNode)
+
+    })
+
+}
+
+
+<% if (session.user.role === 'admin') { %>
+const addEventListeners = (book, bookInfo) => {
+  book.querySelector('.btn').innerText = 'Delete'
+  book.querySelector('.btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    fetch('/api/books/'+bookInfo.id, {
+      method: "DELETE",
+      credentials: "same-origin"
+    })
+    .then(() =>{
+      console.log('yeah!')
+      book.remove() })
+  })
+  book.addEventListener('click', function() {
+    //inject the form to edit the book to modal
+    document.querySelector('.modal-form').innerHTML = `
+      <form class="ui large form">
+        <div class="field">
+          <div class="ui left input">
+          <input id="title" value="${bookInfo.title}" type="text" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left input">
+            <label> Genre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+            <input id="genre" value="${bookInfo.genre}" type="text" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left input">
+            <input id="subgenre" value="${bookInfo.subgenre}" type="text" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left input">
+            <input id="publisher" value="${bookInfo.publisher}" type="text" />
+          </div>
+        </div>
+        <div id="submit" class="ui fluid large primary submit button">
+          Submit
+        </div>
+      </form>
+    `
+    document.querySelector('#submit').addEventListener('click', function () {
+      let submission = {}
+      submission.id = bookInfo.id
+      submission.title = document.querySelector('#title').value
+      submission.genre = document.querySelector('#genre').value
+      submission.subgenre = document.querySelector('#subgenre').value
+      submission.publisher = document.querySelector('#publisher').value
+      document.querySelector('.modal').style.display = 'block'
+      console.log(JSON.stringify(submission))
+      console.log(`/api/books/${bookInfo.id}`)
+      fetch('/api/books/'+bookInfo.id,
+      {
+        method: "PUT",
+        credentials: "same-origin",
+        body: JSON.stringify(submission),
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(response =>
+        response.json()
+      )
+      .then(renderBooks)
+      .then(() => document.querySelector('.modal').style.display = 'none')
+    })
+
+    document.querySelector('.modal').style.display = 'block'
+  })
+}
+<% } else { %>
+const addEventListeners = (book) => {
+  book.querySelector('.btn').innerText = 'Add to Cart'
+  book.querySelector('.btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    alert('This will Add book  to the cart')
+  })
+  book.addEventListener('click', function() {
+    document.querySelector('.modal').style.display = 'block'
+  })
+}
+<%} %>
+const renderEditModal = () => {
+
+}
+
+
+/*
+
+  We have out api setup to create read update and delete books
+
+  First render login page.. After that,
+
+  1) Display all books in the grid.
+       Render the book will show EDIT and DELETE buttons if admin
+       Render the book will show See More.. and Add To Cart if regular
+
+  2) Clicking on "EDIT" on a button will bringup a modal with pre populated info
+     of the book
+
+  3) Clicking on add to cart will add the book to the cart
+
+  3) Clicking on delete will remove the book from db and browser
+
+  // newBook.querySelector('.btn').addEventListener('click', function() {
+  //
+  //   alert(`I should be the edit window for id: ${book.id}`)
+  //   newBook.remove()
+  // })
+  // newBook.querySelector('.editbtn').book = book
+
+ */
+</script>

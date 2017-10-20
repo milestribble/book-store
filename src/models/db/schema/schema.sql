@@ -25,6 +25,6 @@ CREATE TABLE books (
 );
 
 CREATE TABLE authors_books (
-  author_id INT REFERENCES authors(id),
-  book_id INT REFERENCES books(id)
+  author_id INT REFERENCES authors(id) ON DELETE CASCADE,
+  book_id INT REFERENCES books(id) ON DELETE CASCADE
 );
