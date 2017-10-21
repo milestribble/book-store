@@ -21,6 +21,16 @@ module.exports = {
     .then(results => {
       return results.length !== 0
     })
-  }
+  },
+
+  addToCart: (user_id, book_id) =>
+    users.addToCart(user_id, book_id),
+
+  getCart: (user_id) =>
+    users.getCart(user_id),
+
+  removeFromCart: (user_id, book_id) =>
+    users.removeFromCart(user_id, book_id),
+
 
 }

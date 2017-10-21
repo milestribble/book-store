@@ -7,7 +7,7 @@ router.get('/signup', (req, res) => {
   if (req.session) {
     res.status(302).redirect('/books')
   } else {
-    res.render('signup', {err: null})
+    res.render('signup', {session: false, err: null})
   }
 })
 
@@ -20,20 +20,20 @@ router.post('/signup', (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
-      role: req.body.role
+      role: req.body.admin ? 'admin' : 'customer'
     }
     users.doesExistBy('email',user.email)
     .then(doesExist => {
 
       if(doesExist){
-        res.render('signup', {err: 'That email is taken.'})
+        res.render('signup', {session: false, err: 'That email is taken.'})
       } else {
         return users.doesExistBy('username',user.username)
       }
     })
     .then(doesExist => {
       if(doesExist){
-        res.render('signup', {err: 'That email is taken.'})
+        res.render('signup', {session: false, err: 'That email is taken.'})
       } else {
         return bcrypt.hash(user.password, 10)
       }
@@ -58,7 +58,7 @@ router.get('/login', (req, res) => {
   if (req.session) {
     res.status(302).redirect('/books')
   } else {
-    res.render('login',{err: null})
+    res.render('login',{session: false, err: null})
   }
 })
 
@@ -80,7 +80,7 @@ router.post('/login', (req, res) => {
                 if(isValid) {
                   return sessions.create(user.id)
                 } else {
-                  res.render('login',{err: 'Username and password do not match'})
+                  res.render('login',{session: false, err: 'Username and password do not match'})
                 }
               })
               .then(sesResults => {
@@ -91,7 +91,7 @@ router.post('/login', (req, res) => {
           })
 
         } else {
-          res.render('login',{err: 'Username and password do not match'})
+          res.render('login',{session: false, err: 'Username and password do not match'})
 
           //redirect to the login with more info
         }
@@ -122,7 +122,7 @@ router.get('/logout', (req, res) => {
   } else {
     sessions.destroy(req.session.id)
     delete req.session
-    res.render('login',{err:null})
+    res.render('login',{session: false, err:null})
   }
 })
 

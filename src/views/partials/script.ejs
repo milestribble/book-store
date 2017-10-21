@@ -13,25 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //How to know which user is signed in  ? Admin or Regular
-const renderBooks = (books) => {
-    books.sort((left, right) => left.id - right.id)
-    document.querySelector(`#holder`).innerHTML = ""
-    books.forEach(bookInfo => {
-      let bookNode = document.querySelector('#templates').querySelector('.book').cloneNode(true)
-      bookNode.querySelector('img').src = bookInfo.image_url
-      bookNode.querySelector('.title').innerText = bookInfo.title
 
-      addEventListeners(bookNode, bookInfo)
-
-
-      document.querySelector(`#holder`).appendChild(bookNode)
-
-    })
-
-}
 
 
 <% if (session.user.role === 'admin') { %>
+
+
+
+
+
 const addEventListeners = (book, bookInfo) => {
   book.querySelector('.btn').innerText = 'Delete'
   book.querySelector('.btn').classList.add('btn','btn-danger')
@@ -47,7 +37,28 @@ const addEventListeners = (book, bookInfo) => {
   })
   book.addEventListener('click', function() {
     //inject the form to edit the book to modal
-    document.querySelector('.modal-form').innerHTML = `
+    // let form = {
+    //   heading: 'Edit book:',
+    //   tag: 'input',
+    //   value: {
+    //     title: `value="${bookInfo.title}"`,
+    //     image_url: `value="${bookInfo.image_url}"`,
+    //     isbn: `value="${bookInfo.isbn}"`,
+    //     price: `value="${bookInfo.price}"`,
+    //     description: `value="${bookInfo.description}"`
+    //   },
+    //   textIn: {
+    //     title: '',
+    //     image_url: '',
+    //     isbn: '',
+    //     price: '',
+    //     description: '',
+    //   }
+    //
+    // }
+
+    document.querySelector('.modal-form').innerHTML =
+    `
       <h2>Edit book:</h2>
       <form class="ui large form">
         <div class="field">
@@ -116,46 +127,288 @@ const addEventListeners = (book, bookInfo) => {
     document.querySelector('.modal').style.display = 'block'
   })
 }
+
+const showNewModal = () => {
+  document.querySelector('.modal').style.display = 'block'
+  // let form = {
+  //   heading: 'Add new book:',
+  //   tag: 'input',
+  //   value: {
+  //     title: `value="${bookInfo.title}"`,
+  //     image_url: `value="${bookInfo.image_url}"`,
+  //     isbn: `value="${bookInfo.isbn}"`,
+  //     price: `value="${bookInfo.price}"`,
+  //     description: `value="${bookInfo.description}"`
+  //   },
+  //   textIn: {
+  //     title: '',
+  //     image_url: '',
+  //     isbn: '',
+  //     price: '',
+  //     description: ''
+  //   }
+  // }
+  document.querySelector(`.modal-form`).innerHTML = ''
+  document.querySelector(`.modal-form`).innerHTML = `
+  <h2>Add new book:</h2>
+    <form class="ui large form">
+      <div class="field">
+        <div class="ui left input">
+        <label> Title: </label>
+        <input id="title" placeholder="Title" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Image URL: </label>
+          <input id="image_url" placeholder="Image Url" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> ISBN: </label>
+          <input id="isbn" placeholder="ISBN" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Price: </label>
+          <input id="price" placeholder="Price" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Description: </label>
+          <input id="description" placeholder="Description" type="text" />
+        </div>
+      </div>
+      <div id="submit" class="ui fluid large primary submit button">
+        Submit
+      </div>
+    </form>
+  `
+  document.querySelector('#submit').addEventListener('click', function () {
+    let submission = {}
+    submission.title = document.querySelector('#title').value
+    submission.image_url = document.querySelector('#image_url').value
+    submission.isbn = document.querySelector('#isbn').value
+    submission.price = document.querySelector('#price').value
+    submission.description = document.querySelector('#description').value
+    document.querySelector('.modal').style.display = 'none'
+    console.log(JSON.stringify(submission))
+    fetch('/api/books/',
+    {
+      method: "POST",
+      credentials: "same-origin",
+      body: JSON.stringify(submission),
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+      }
+    })
+    .then(response =>
+      response.json()
+    )
+    .then(renderBooks)
+    .then(() => document.querySelector('.modal').style.display = 'none')
+  })
+}
+
+
+
 <% } else { %>
-const addEventListeners = (book) => {
+
+
+
+
+
+const addEventListeners = (book, bookInfo) => {
   book.querySelector('.btn').innerText = 'Add to Cart'
+  book.querySelector('.btn').classList.add('btn','btn-primary')
   book.querySelector('.btn').addEventListener('click', function(e) {
     e.stopPropagation();
-    alert('This will Add book  to the cart')
+    console.log(book)
+    fetch('/api/cart/'+bookInfo.id, {
+      method: "POST",
+      credentials: "same-origin"
+    })
+    .then(res => res.json() )
+    .then((res) => {
+      console.log(res)
+      renderCart(res)
+    })
+
   })
   book.addEventListener('click', function() {
+    // let form = {
+    //   heading: 'More Info:',
+    //   tag: 'text',
+    //   value: {
+    //     title: '',
+    //     image_url: '',
+    //     isbn: '',
+    //     price: '',
+    //     description: ''
+    //   },
+    //   textIn: {
+    //     title: `${bookInfo.title}`,
+    //     image_url: `${bookInfo.image_url}`,
+    //     isbn: `${bookInfo.isbn}`,
+    //     price: `${bookInfo.price}`,
+    //     description: `${bookInfo.description}`
+    //   }
+    // }
+    document.querySelector('.modal-form').innerHTML = `
+    <h2>More Info:</h2>
+    <form class="ui large form">
+      <div class="field">
+        <div class="ui left input">
+        <label> Title: </label>
+        <text id="title" value type="text" />${bookInfo.title}</text>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Image URL: </label>
+          <text id="image_url" value type="text" />${bookInfo.image_url}</text>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> ISBN: </label>
+          <text id="isbn" value type="text" />${bookInfo.isbn}</text>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Price: </label>
+          <text id="price" value type="text" />${bookInfo.price}</text>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left input">
+          <label> Description: </label>
+          <text id="description" value type="text" />${bookInfo.description}</text>
+        </div>
+      </div>
+      <div id="submit" class="ui fluid large primary submit button">
+        Submit
+      </div>
+    </form>
+    `
+    document.querySelector('.modal').style.display = 'block'
+
+  })
+}
+
+<%} %>
+
+const renderBooks = (books) => {
+    books.sort((left, right) => left.id - right.id)
+    document.querySelector(`#holder`).innerHTML = ""
+    books.forEach(bookInfo => {
+      let bookNode = document.querySelector('#templates').querySelector('.book').cloneNode(true)
+      bookNode.querySelector('.shrinked').style.backgroundImage = `url(${bookInfo.image_url})`
+      bookNode.querySelector('.shrinked').style.backgroundSize = `contain`
+      bookNode.querySelector('.shrinked').style.backgroundRepeat = 'no-repeat'
+      bookNode.querySelector('.shrinked').style.backgroundPosition = 'center center'
+      bookNode.querySelector('.title').innerText = bookInfo.title
+      addEventListeners(bookNode, bookInfo)
+      document.querySelector(`#holder`).appendChild(bookNode)
+    })
+}
+
+const renderCart = (cart) => {
+    document.querySelector(`.modal-form`).innerHTML = '<br>'
+    let total = 0
+    cart.forEach(book => {
+      cartItem = document.createElement('div')
+      cartItem.classList.add('cartItem')
+      cartItem.innerHTML = `
+      <span class="cartTitle">${book.title}</span><div class="cartLine"><span class="cartPrice">$${book.price}</span><button class="cartDelBtn">X</button></div>
+      `
+      total += Number(book.price)
+      cartItem.querySelector('.cartDelBtn').book_id = book.book_id
+      cartItem.querySelector('.cartDelBtn').addEventListener('click', deleteFromCart)
+
+
+
+      document.querySelector(`.modal-form`).appendChild(cartItem)
+    })
+    let totalDiv = document.createElement('div')
+    // totalDiv.innerText = `$${total}`
+    totalDiv.classList.add('cartItem')
+    totalDiv.innerHTML = `
+    <span class="cartTitle"></span><div class="cartLine"><span class="cartTotal"></span><button class="space"> </button></div>
+    `
+    totalDiv.querySelector(`.cartTotal`).innerText = total === 0 ? 'Cart Empty' : `$${total.toFixed(2)}`
+    document.querySelector(`.modal-form`).appendChild(totalDiv)
+}
+
+const deleteFromCart = (e) => {
+        fetch('/api/cart/'+e.target.book_id, {
+          method: "DELETE",
+          credentials: "same-origin"
+        })
+        .then(res => res.json() )
+        .then(res => {
+          renderCart(res)
+        })
+      }
+
+const showCart = () => {
+  fetch('/api/cart/', {
+    method: "GET",
+    credentials: "same-origin"
+  })
+  .then(res => res.json() )
+  .then((res) => {
+    console.log(res)
+    renderCart(res)
     document.querySelector('.modal').style.display = 'block'
   })
 }
-<%} %>
-const renderEditModal = () => {
 
-}
-
-
+const formGenorater = (form) =>
+`
+  <h2>${form.heading}</h2>
+  <form class="ui large form">
+    <div class="field">
+      <div class="ui left input">
+      <label> Title: </label>
+      <${form.tag} id="title" ${form.value.title} type="text">${form.textIn}</${form.tag}>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left input">
+        <label> Image URL: </label>
+        <${form.tag} id="image_url" ${form.value.image_url} type="text">${form.textIn}</${form.tag}>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left input">
+        <label> ISBN: </label>
+        <${form.tag} id="isbn" ${form.value.isbn} type="text">${form.textIn}</${form.tag}>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left input">
+        <label> Price: </label>
+        <${form.tag} id="price" ${form.value.price} type="text">${form.textIn}</${form.tag}>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left input">
+        <label> Description: </label>
+        <${form.tag} id="description" ${form.value.description}" type="text">${form.textIn}</${form.tag}>
+      </div>
+    </div>
+    <div id="submit" class="ui fluid large primary submit button">
+      Submit
+    </div>
+  </form>
+`
 /*
-
-  We have out api setup to create read update and delete books
-
-  First render login page.. After that,
-
-  1) Display all books in the grid.
-       Render the book will show EDIT and DELETE buttons if admin
-       Render the book will show See More.. and Add To Cart if regular
-
-  2) Clicking on "EDIT" on a button will bringup a modal with pre populated info
-     of the book
-
-  3) Clicking on add to cart will add the book to the cart
-
-  3) Clicking on delete will remove the book from db and browser
-
-  // newBook.querySelector('.btn').addEventListener('click', function() {
-  //
-  //   alert(`I should be the edit window for id: ${book.id}`)
-  //   newBook.remove()
-  // })
-  // newBook.querySelector('.editbtn').book = book
 
  */
 </script>

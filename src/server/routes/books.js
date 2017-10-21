@@ -1,6 +1,8 @@
 const router = require('express').Router()
 
 const books = require('../../models/books_model')
+const users = require('../../models/users_model')
+
 
 router.get('/books', (req, res) => {
   books.getAll()
@@ -67,7 +69,53 @@ router.delete('/books/:id', (req, res) => {
   }
 })
 
+router.get('/cart/', (req, res) => {
+  // req.session.user.id
+  //
+  if (req.session.user.role !== 'customer') {
+    res.status(403).json("Unauthorised")
+  } else {
 
+
+    users.getCart(req.session.user.id)
+      .then(results => {
+        res.json(results)
+      })
+  }
+})
+
+router.post('/cart/:id', (req, res) => {
+  // req.session.user.id
+  //
+  if (req.session.user.role !== 'customer') {
+    res.status(403).json("Unauthorised")
+  } else {
+
+
+    users.addToCart(req.session.user.id, req.params.id)
+      .then(()=> users.getCart(req.session.user.id) )
+      .then(results => {
+        res.json(results)
+      })
+  }
+})
+
+router.delete('/cart/:id', (req, res) => {
+  // req.session.user.id
+  //
+  if (req.session.user.role !== 'customer') {
+    res.status(403).json("Unauthorised")
+  } else {
+
+    console.log(req.session.user.id, req.params.id);
+    users.removeFromCart(req.session.user.id, req.params.id)
+      .then(()=> users.getCart(req.session.user.id) )
+      .then(results => {
+        console.log(results)
+        res.json(results)
+      })
+  }
+})
 
 module.exports = router
 

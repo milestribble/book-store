@@ -4,6 +4,9 @@
         <h1 class="ui huge header">
           Please sign up
         </h1>
+        <% if (err !== null) {%>
+           <%=err %>
+         <% } %>
         <form action="/signup" method="POST" class="ui large form">
           <div class="field">
             <div class="ui left icon input">
@@ -22,7 +25,7 @@
           </div>
           <div class="field">
             <div class="ui checkbox">
-              <input name="remember" type="checkbox" /><label>Remember me</label>
+              <input name="admin" type="checkbox" /><label>Sign up as Admin</label>
             </div>
           </div>
           <button action="submit" class="ui fluid large primary submit button">

@@ -14,7 +14,9 @@
         <h1>Book Store</h1>
         <p>Welcome to the Book Store</p>
         <p>
-          <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Book: </a>
+          <% if (session.user.role === 'admin') { %>
+            <a class="btn btn-primary btn-lg" onclick='showNewModal()'>Add New Book: </a>
+          <%} %>
         </p>
       </div>
     </header>
@@ -50,7 +52,7 @@
 <div class="modal">
   <div class="modal-content">
     <span class="closeBtn">&times;</span>
-
+      <br><br>
     <div class="modal-form">
 
 

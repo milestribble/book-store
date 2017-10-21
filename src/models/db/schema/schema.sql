@@ -29,3 +29,9 @@ CREATE TABLE authors_books (
   author_id INT REFERENCES authors(id) ON DELETE CASCADE,
   book_id INT REFERENCES books(id) ON DELETE CASCADE
 );
+
+CREATE TABLE cart (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  book_id INT REFERENCES books(id) ON DELETE CASCADE
+);

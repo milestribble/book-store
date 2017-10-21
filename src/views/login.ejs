@@ -5,6 +5,9 @@
         <h1 class="ui huge header">
           Please log in
         </h1>
+        <% if (err !== null) {%>
+           <%=err %>
+         <% } %>
         <form action="/login" method="POST" class="ui large form">
           <div class="field">
             <div class="ui left icon input">
@@ -14,11 +17,6 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i><input name="password" placeholder="Password" type="password" />
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input name="remember" type="checkbox" /><label>Remember me</label>
             </div>
           </div>
           <button class="ui fluid large primary submit button">

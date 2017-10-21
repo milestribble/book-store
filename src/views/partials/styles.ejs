@@ -4,6 +4,9 @@
 
 <style>
 
+button:focus {outline:0;}
+
+
 /*  MODAL STYLES    */
 
 .modal {
@@ -24,6 +27,7 @@
   padding: 20px;
   width: 50%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  min-height: 90px;
 }
 
 .closeBtn {
@@ -95,7 +99,13 @@ label {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  padding-bottom: 20px; 
+  padding-top: 10px;
+  padding-bottom: 12px;
+}
+.thumbnail > .btn {
+  margin: 0 auto;
+  width: 90%
+
 }
 
 img {
@@ -119,4 +129,45 @@ img {
   padding-top: auto;
   padding-bottom: auto;
 }
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  /*border: 1px solid red;*/
+}
+.cartLine {
+  display: flex;
+  justify-content: space-between;
+  min-width: 10%;
+  margin-right: 20px;
+  /*border: 1px solid red;*/
+}
+
+.cartDelBtn {
+  background-color: rgba(255,10,10,.9);
+  width: 25px;
+  height: 25px;
+  float:right;
+}
+.space {
+  width: 25px;
+  height: 25px;
+  float:right;
+  background: transparent;
+  border: none;
+}
+.totalDiv{
+  float:right;
+}
+/*li > .cartTitle {
+  float:left
+}
+li > .cartPrice {
+  float:right
+}
+li > .cartDelBtn {
+  float:right
+}*/
+
 </style>
